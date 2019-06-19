@@ -1,9 +1,10 @@
 package com.model.day1.company;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.time.LocalDate;
-
+@Data
 @AllArgsConstructor
 public class Purchase {             // klasa reprezentuje zakup
     private Product product;        // produkt zakupiony

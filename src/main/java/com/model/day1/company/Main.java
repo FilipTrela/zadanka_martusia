@@ -1,9 +1,8 @@
 package com.model.day1.company;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -496,5 +495,73 @@ public class Main {
 // 39. Wypisz jaki produkt poza paliwem cieszy się największą popularnością (zwróć go) (find first)
 // 40. Znajdź produkty które były kupowane zarówno w kilogramach jak i w sztukach
 // 40. Wymyśl 5 ciekawych zapytań i spróbuj je zrealizować. Najciekawsze polecenie otrzyma nagrodę-niespodziankę z Baltimore :P
+
     }
+
+    public static void zadanie1(List<Company> companies) {
+        System.out.println("Zadanie 1");
+        companies.stream().map(Company::getName).forEach(System.out::println);
+    }
+
+    public static void zadanie2(List<Company> companies) {
+        System.out.println("Zadanie 2");
+        companies.stream().filter(company -> company.getCityHeadquarters().equalsIgnoreCase("Detroit")).map(Company::getName).forEach(System.out::println);
+
+    }
+
+    public static void zadanie3(List<Company> companies) {
+        System.out.println("Zadanie 3");
+        companies.stream().filter(c -> c.getCityHeadquarters().equalsIgnoreCase("London")).sorted(Comparator.comparingInt(Company::getEmployees)).map(Company::getName).forEach(System.out::println);
+    }
+
+    public static void zadanie4(List<Company> companies) {
+        System.out.println("Zadanie 4");
+        Comparator<Company> komparator = (a, b) -> {
+            if (a.getPurchaseList().size() > b.getPurchaseList().size())
+                return -1;
+            if (a.getPurchaseList().size() > b.getPurchaseList().size())
+                return 1;
+            if (a.getEmployees() > b.getEmployees())
+                return 1;
+            if (a.getEmployees() < b.getEmployees())
+                return -1;
+            return 0;
+        };
+        companies.stream().filter(company -> company.getCityHeadquarters().equalsIgnoreCase("Warsaw")).sorted(komparator).forEach(c -> System.out.println(c.getName() + " " + c.getEmployees() + " " + c.getPurchaseList().size()));
+
+
+    }
+
+    public static Optional<Company> zadanie5(List<Company> companies) {
+        System.out.println("Zadanie 5");
+        return companies.stream().filter(company1 -> company1.getCityHeadquarters().equalsIgnoreCase("Kijev")).max(Comparator.comparingInt((Company::getEmployees)));
+
+    }
+
+    public static Optional<Company> zadanie6(List<Company> companies) {
+        System.out.println("Zadanie 6");
+        List<Company> companies1;
+        return companies.stream().min(Comparator.comparingInt(c -> c.getName().length()));
+    }
+
+    public static Optional<Company> zadanie7(List<Company> companies) {
+        System.out.println("Zadanie 7");
+        return companies.stream().filter(company -> !company.getCityHeadquarters().equalsIgnoreCase("Kijev") && !company.getCityHeadquarters().equalsIgnoreCase("London") && !company.getCityHeadquarters().equalsIgnoreCase("Detroit")).min(Comparator.comparingInt(c -> c.getPurchaseList().size()));
+    }
+
+    public static void zadanie8(List<Company> companies) {
+        System.out.println("Zadanie 8");
+        companies.stream().filter(company -> company.getCityHeadquarters().equalsIgnoreCase("Kijev") || company.getCityHeadquarters().equalsIgnoreCase("Detroit")).forEach(c -> c.setEmployees(c.getEmployees() + 1));
+    }
+
+    public static Map<String, Integer> zadanie9(List<Company> companies) {
+        System.out.println("Zadanie 9");
+        return companies.stream().collect(Collectors.toMap(Company::getName, Company::getEmployees, (c1, c2) -> c1 + c2));
+    }
+
+    public static Map<String, List<Company>> zadanie10(List<Company> companies) {
+        System.out.println("Zadanie 10");
+        return companies.stream().collect(Collectors.groupingBy(Company::getCityHeadquarters));
+    }
+
 }

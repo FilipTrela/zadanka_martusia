@@ -1,8 +1,10 @@
 package com.model.day1.company;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.util.List;
+@Data
 
 @AllArgsConstructor
 public class Company {
