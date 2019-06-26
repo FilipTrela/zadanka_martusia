@@ -563,5 +563,12 @@ public class Main {
         System.out.println("Zadanie 10");
         return companies.stream().collect(Collectors.groupingBy(Company::getCityHeadquarters));
     }
+    public static Optional<Company> zadanie11(List<Company> companies){
+        return companies.stream().max(Comparator.comparingDouble(c -> c.getPurchaseList().stream()
+                        .mapToDouble(p -> p.getQuantity() * p.getProduct().getPrice())
+                        .sum())
+                );
+
+    }
 
 }

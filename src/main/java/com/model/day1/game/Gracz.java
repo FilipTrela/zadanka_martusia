@@ -3,6 +3,7 @@ package com.model.day1.game;
 import lombok.Data;
 
 import java.util.Random;
+
 @Data
 
 public class Gracz {
@@ -11,13 +12,30 @@ public class Gracz {
     private final int minWys = 1;
     private final int minSzer = 1;
     private final int maxSzer;
-    private int wysokoscGracza ;
+    private int wysokoscGracza;
     private int poprzedniaWysokosc;
     private int szerokoscGracza;
     private int poprzedniaSzerokosc;
+    private boolean pro;
 
 
     public void ruszGraczem(String ruch) {
+        if (pro) {
+            switch (ruch.toLowerCase().charAt(0)) {
+                case 'w':
+                    ruch = "góra";
+                    break;
+                case 'a':
+                    ruch = "lewo";
+                    break;
+                case 's':
+                    ruch = "dół";
+                    break;
+                case 'd':
+                    ruch = "prawo";
+                    break;
+            }
+        }
         if (ruch.equalsIgnoreCase("Góra")) {
             if (wysokoscGracza == minWys) {
                 System.err.println("Dalej sie nie da!");
@@ -54,10 +72,10 @@ public class Gracz {
 
     public void randomoweUstawienieGracza() {
         Random random = new Random();
-        this.wysokoscGracza=random.nextInt(maxWys-1)+1;
-        this.szerokoscGracza=random.nextInt(maxSzer-1)+1;
-        this.poprzedniaWysokosc=wysokoscGracza;
-        this.poprzedniaSzerokosc=szerokoscGracza;
+        this.wysokoscGracza = random.nextInt(maxWys - 1) + 1;
+        this.szerokoscGracza = random.nextInt(maxSzer - 1) + 1;
+        this.poprzedniaWysokosc = wysokoscGracza;
+        this.poprzedniaSzerokosc = szerokoscGracza;
     }
 
     public Gracz(int maxWys, int maxSzer) {

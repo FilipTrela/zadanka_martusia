@@ -7,7 +7,7 @@ public class Plansza {
     private Gracz gracz;
     private int rozmiar;
     private char[][] tablica;
-    private boolean zamalowywać=false;
+    private boolean zamalowywać = false;
 
     public void wypelnijTablice() {
         tablica = new char[rozmiar][rozmiar * 2];
@@ -28,7 +28,7 @@ public class Plansza {
     void wypiszTablice() {
         for (int i = 0; i < tablica.length; i++) {
             for (int j = 0; j < tablica[i].length; j++) {
-                if (i == gracz.getPoprzedniaWysokosc() && j == gracz.getPoprzedniaSzerokosc()&&!zamalowywać)
+                if (i == gracz.getPoprzedniaWysokosc() && j == gracz.getPoprzedniaSzerokosc() && !zamalowywać)
                     tablica[i][j] = ' ';
                 if (i == gracz.getWysokoscGracza() && j == gracz.getSzerokoscGracza())
                     tablica[i][j] = gracz.getZnakGracza();
