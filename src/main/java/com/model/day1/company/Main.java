@@ -529,7 +529,6 @@ public class Main {
         };
         companies.stream().filter(company -> company.getCityHeadquarters().equalsIgnoreCase("Warsaw")).sorted(komparator).forEach(c -> System.out.println(c.getName() + " " + c.getEmployees() + " " + c.getPurchaseList().size()));
 
-
     }
 
     public static Optional<Company> zadanie5(List<Company> companies) {
