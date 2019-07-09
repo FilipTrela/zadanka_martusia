@@ -485,6 +485,7 @@ public class Main {
 // 29. Wypisz ilość kilogramów cukru zużywaną przez "Detroit Bakery"
 // 30. Wypisz wszystkie zakupy firmy "Solwit".
 // 31. Wypisz wszystkie produkty które są tańsze (jednostkowo) niż 3$.
+        System.out.println(zadanie31(companies));
 // 32. Wypisz ile sprzedano najtańszego produktu
 // 33. Firma "Take me home" zajmuje się transportem. Na początku działalności kupiła wiele samochodów do użytku. Oblicz ile litrów paliwa (średnio) spalają ich samochody (zakładamy że wszystkie palą benzynę i że tankowane są wszystkie.
 // 34. Wypisz firmę która zużywa najwięcej kawy
@@ -562,11 +563,305 @@ public class Main {
         System.out.println("Zadanie 10");
         return companies.stream().collect(Collectors.groupingBy(Company::getCityHeadquarters));
     }
-    public static Optional<Company> zadanie11(List<Company> companies){
+
+    public static Optional<Company> zadanie11(List<Company> companies) {
+        System.out.println("Zadanie 11");
         return companies.stream().max(Comparator.comparingDouble(c -> c.getPurchaseList().stream()
-                        .mapToDouble(p -> p.getQuantity() * p.getProduct().getPrice())
+                .mapToDouble(p -> p.getQuantity() * p.getProduct().getPrice())
+                .sum())
+        );
+
+    }
+
+    public static Optional<Company> zadanie12(List<Company> companies) {
+        System.out.println("Zadanie 12");
+        return companies.stream().max(Comparator.comparingDouble
+                (c -> c.getPurchaseList().stream()
+                        .filter(p -> p.getQuantity() > 10000)
+                        .mapToDouble(p -> p.getQuantity() * p.getProduct()
+                                .getPrice())
+                        .sum()));
+    }
+
+    public static Map<String, Double> zadanie13(List<Company> companies) {
+        System.out.println("Zadanie 13");
+        Set<String> miescowosci = companies.stream().map(Company::getCityHeadquarters).collect(Collectors.toSet());
+
+        return miescowosci.stream().collect(Collectors.toMap(
+                m -> m,
+                m -> companies.stream()
+                        .filter(company -> company.getCityHeadquarters().equals(m))
+                        .mapToDouble(c ->
+                                c.getPurchaseList().stream().mapToDouble(p -> p.getQuantity() * p.getProduct().getPrice())
+                                        .sum()).sum()));
+
+    }
+
+    public static void zadanie14(List<Company> companies) {
+        System.out.println("Zadanie 14");
+        companies.stream().filter(company -> company.getPurchaseList().stream().anyMatch(purchase -> purchase.getPurchaseDate()
+                .isEqual(LocalDate.of(2018, 1, 15))
+                && purchase.getProduct().getName().equalsIgnoreCase("Network Switch")))
+                .forEach(company -> System.out.println(company.getName() + " " + company.getCityHeadquarters()));
+    }
+
+    public static Optional<Company> zadanie15(List<Company> companies) {
+        System.out.println("Zadanie 15");
+        return companies.stream().max(Comparator.comparingDouble(
+                c -> c.getPurchaseList().stream()
+                        .filter(p -> p.getProduct().getName().equalsIgnoreCase("Coffee, Arabica")
+                                || p.getProduct().getName().equalsIgnoreCase("Coffee, Robusta"))
+                        .mapToDouble(Purchase::getQuantity).sum()
+        ));
+    }
+
+    public static void zadanie16(List<Company> companies) {
+        System.out.println("Zadanie 16");
+        double sumKawy = companies.stream()
+                .flatMap(c -> c.getPurchaseList().stream()
+                        .filter(p -> p.getProduct().getName().equalsIgnoreCase("Coffee, Arabica")
+                                && p.getPurchaseDate().getMonth().getValue() == 1))
+                .mapToDouble(Purchase::getQuantity).sum();
+        System.out.println("Suma arabici kupionej w styczniu to " + sumKawy + " kg!");
+    }
+
+    public static void zadanie17(List<Company> companies) {
+        System.out.println("Zadanie 17");
+        double sumKawy = companies.stream()
+                .flatMap(c -> c.getPurchaseList().stream()
+                        .filter(purchase -> purchase.getProduct().getName().equalsIgnoreCase("Coffee, Arabica")
+                                && purchase.getProduct().getName().equalsIgnoreCase("Coffee, Robusta")
+                                && purchase.getPurchaseDate().getDayOfMonth() % 2 == 0))
+                .mapToDouble(Purchase::getQuantity).sum();
+        System.out.println("Łacznie kawy w dni parzyste zakupiono " + sumKawy + " kg!");
+    }
+
+    public static Map<Product, Set<Company>> zadanie18(List<Company> companies) {
+        List<Product> products = companies
+                .stream()
+                .map(Company::getPurchaseList)
+                .flatMap(purchases -> purchases
+                        .stream()
+                        .map(Purchase::getProduct)
+                        .filter(product -> product
+                                .getName()
+                                .startsWith("Coffe,")))
+                .collect(Collectors.toList());
+
+        return products.stream().collect(Collectors.toMap(
+                product -> product,
+                product -> companies
+                        .stream()
+                        .filter(company -> company
+                                .getPurchaseList()
+                                .stream()
+                                .anyMatch(purchase -> purchase
+                                        .getProduct() == product))
+                        .collect(Collectors
+                                .toSet()),
+                (p1, p2) -> {
+                    Set<Company> companySet = new HashSet<>(p1);
+                    companySet.addAll(p2);
+                    return companySet;
+                }
+        ));
+
+
+    }
+
+    public static Optional<Company> zadanie19(List<Company> companies) {
+        return companies
+                .stream()
+                .max(Comparator.comparingDouble(companie -> companie
+                        .getPurchaseList()
+                        .stream()
+                        .filter(purchase -> purchase
+                                .getPurchaseDate()
+                                .getMonth()
+                                .getValue() == 1
+                                && purchase
+                                .getProduct()
+                                .getName()
+                                .equalsIgnoreCase("Fuel, oil"))
+                        .mapToDouble(Purchase::getQuantity)
+                        .sum()
+                ));
+    }
+
+    public static Optional<Company> zadanie20(List<Company> companies) {
+        return companies
+                .stream()
+                .max(Comparator
+                        .comparingDouble(c -> c
+                                .getPurchaseList()
+                                .stream()
+                                .mapToDouble(p ->
+                                        p.getQuantity()
+                                                *
+                                                p.getProduct()
+                                                        .getPrice())
+                                .sum()
+                                / c
+                                .getEmployees()));
+    }
+
+    public static Optional<Company> zadanie21(List<Company> companies) {
+        return companies
+                .stream()
+                .max(Comparator
+                        .comparingDouble(c -> c
+                                .getPurchaseList()
+                                .stream()
+                                .filter(purchase ->
+                                        purchase.getProduct().getName().equalsIgnoreCase("pen") ||
+                                                purchase.getProduct().getName().equalsIgnoreCase("pencil") ||
+                                                purchase.getProduct().getName().equalsIgnoreCase("paper") ||
+                                                purchase.getProduct().getName().equalsIgnoreCase("clip") ||
+                                                purchase.getProduct().getName().equalsIgnoreCase("scisors") ||
+                                                purchase.getProduct().getName().equalsIgnoreCase("puncher"))
+                                .mapToDouble(p -> p.getProduct().getPrice() * p.getQuantity())
+                                .sum()));
+    }
+
+    public static void zadanie22(List<Company> companies) {
+        Map<Company, Double> moneyForNothing = companies.stream().collect(Collectors.toMap(
+                co -> co,
+                co -> co.getPurchaseList()
+                        .stream()
+                        .filter(p -> p.getProduct().getName().startsWith("Fuel"))
+                        .mapToDouble(p -> p.getQuantity() * p.getProduct().getPrice()).sum()))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1 + e2, LinkedHashMap::new));
+
+        moneyForNothing.forEach((key, value) -> System.out.println(key.getName() + " " + value));
+
+    }
+
+    public static Set<Product> zadanie23(List<Company> companies) {
+        return companies
+                .stream()
+                .map(c -> c
+                        .getPurchaseList()
+                        .stream()
+                        .filter(p -> p.getUnit() == UNIT.KILOGRAM)
+                        .map(Purchase::getProduct)
+                        .collect(Collectors.toSet()))
+                .flatMap(Collection::stream).collect(Collectors.toSet());
+    }
+
+    public static List<Purchase> zadanie24(List<Company> companies) {
+        return companies
+                .stream()
+                .filter(c -> c.getCityHeadquarters().equalsIgnoreCase("Detroit"))
+                .flatMap(company -> company.getPurchaseList()
+                        .stream()
+                        .filter(p -> p.getPurchaseDate().getMonth().getValue() == 2)
+                        .sorted(Comparator.comparingDouble(pur -> pur.getProduct().getPrice() * pur.getQuantity())))
+                .collect(Collectors.toList());
+    }
+
+    public static double zadanie25(List<Company> companies) {
+        return companies
+                .stream()
+                .mapToDouble(c -> c.getPurchaseList()
+                        .stream()
+                        .filter(p -> p.getProduct().getName().equalsIgnoreCase("Office rent"))
+                        .filter(p -> p.getPurchaseDate().getMonth().getValue() == 2)
+                        .mapToDouble(Purchase::getQuantity)
                         .sum())
-                );
+                .sum();
+    }
+
+    public static Map<Company, Integer> zadanie26(List<Company> companies) {
+        return companies
+                .stream()
+                .collect(Collectors.toMap(
+                        c -> c,
+                        c -> c.getPurchaseList()
+                                .stream()
+                                .filter(purchase -> purchase
+                                        .getProduct()
+                                        .getName()
+                                        .equalsIgnoreCase("Office rent"))
+                                .mapToInt(p -> (int) p.getQuantity())
+                                .sum()
+                        , (c1, c2) -> c1 + c2));
+        // to, czego dokonujemy w ostatniej linii:
+//        (o, o2) -> o + o2));
+        // to kryterium "co zrobić z wartościami jeśli pod tym samym kluczem będzie więcej niż tylko jedna wartość
+        // nasze kryterium dokonuje sumowania - ponieważ chcę dowiedzieć się ile firma Intel wynajęła w sumie biur.
+    }
+
+    public static void zadanie27(List<Company> companies) {
+        Map<Company, Double> companyDoubleMap = companies.stream()
+                .filter(c -> c.getPurchaseList().stream()
+                        .anyMatch(p -> p.getProduct().getName().equalsIgnoreCase("Apple Phone")))
+                .collect(Collectors.toMap(
+                        c -> c,
+                        comp -> comp.getPurchaseList()
+                                .stream()
+                                .filter(p -> p.getProduct().getName().equalsIgnoreCase("Apple Phone"))
+                                .mapToDouble(Purchase::getQuantity).sum()
+                ))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (m1, m2) -> m1, LinkedHashMap::new));
+        companyDoubleMap.forEach((key, value) -> System.out.println(key.getName() + " " + value));
+    }
+
+    public static void zadanie28(List<Company> companies) {
+        Map<String, Long> stringLongMap = companies
+                .stream()
+                .collect(Collectors.toMap(
+                        Company::getName,
+                        c -> companies
+                                .stream()
+                                .filter(company -> company.getName().equalsIgnoreCase(c.getName()))
+                                .map(Company::getCityHeadquarters).count(),
+                        (o1, o2) -> (o1)
+                ));
+        stringLongMap
+                .entrySet()
+                .stream()
+                .filter(stringLongEntry -> stringLongEntry.getValue() > 1)
+                .forEach(stringLongEntry -> System.out.println(stringLongEntry.getKey() + " " + stringLongEntry.getValue()));
+    }
+
+    public static void zadanie29(List<Company> companies) {
+        double kgCukru = companies.stream()
+                .filter(c -> c.getName().equalsIgnoreCase("Detroit Bakery"))
+                .mapToDouble(c -> c.getPurchaseList()
+                        .stream()
+                        .filter(p -> p.getProduct().getName().equalsIgnoreCase("Sugar"))
+                        .mapToDouble(Purchase::getQuantity).sum()).sum();
+    }
+
+    public static void zadanie30(List<Company> companies) {
+        companies
+                .stream()
+                .filter(c -> c.getName().equalsIgnoreCase("Solwit"))
+                .flatMap(c -> c.getPurchaseList()
+                        .stream())
+                .forEach(System.out::println);
+    }
+
+    public static Set<Product> zadanie31(List<Company> companies) {
+        return companies
+                .stream()
+                .map(c -> c.getPurchaseList()
+                        .stream()
+                        .filter(p -> p.getProduct().getPrice() < 3)
+                        .map(Purchase::getProduct)
+                        .collect(Collectors.toSet()))
+                .flatMap(Collection::stream).collect(Collectors.toSet());
+    }
+
+    public static void zadanie32(List<Company> companies) {
+
+
 
     }
 
