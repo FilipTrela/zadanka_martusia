@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="048eee8b-0486-45fb-a505-1c75dc14e8e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Gracz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Gracz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Plansza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Plansza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day1/company/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day1/company/Company.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day1/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day1/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day1/company/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day1/company/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day1/company/Purchase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day1/company/Purchase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day1/game/Gracz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day1/game/Gracz.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day1/game/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day1/game/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day1/game/Plansza.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day1/game/Plansza.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day1/player/Score.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day1/player/Score.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day2/coffeshop/CoffeeAddition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day2/coffeshop/CoffeeAddition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day2/coffeshop/Magazyn.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day2/coffeshop/Magazyn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/model/day2/coffeshop/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/model/day2/coffeshop/Main.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -178,7 +162,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583258170612" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583258299513" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -267,12 +251,12 @@
       <workItem from="1562857406134" duration="204000" />
       <workItem from="1562860738404" duration="2651000" />
       <workItem from="1563271814781" duration="855000" />
-      <workItem from="1583234380337" duration="976000" />
+      <workItem from="1583234380337" duration="1222000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49676000" />
+    <option name="totallyTimeSpent" value="49922000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
