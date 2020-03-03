@@ -4,43 +4,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Podaj wysokość mapki");
-        int x = Integer.parseInt(scanner.nextLine());
-        Gracz gracz = new Gracz((x - 1), ((x * 2) - 2));
-        gracz.randomoweUstawienieGracza();
-        Plansza plansza = new Plansza(gracz, x);
-        plansza.wypelnijTablice();
-        plansza.wypiszTablice();
-        String komenda;
-        do {
-            komenda = scanner.nextLine();
-            if (komenda.equalsIgnoreCase("prawo") || komenda.equalsIgnoreCase("lewo") || komenda.equalsIgnoreCase("góra") || komenda.equalsIgnoreCase("dół") || komenda.equalsIgnoreCase("w") || komenda.equalsIgnoreCase("d") || komenda.equalsIgnoreCase("s") || komenda.equalsIgnoreCase("a")) {
-                gracz.ruszGraczem(komenda);
-                plansza.wypiszTablice();
-            } else if (komenda.equalsIgnoreCase("zmień")) {
-                System.out.println("Podaj znak jakim ma być gracz");
-                String nowyZnakString = scanner.nextLine();
-                char nowyZnak = nowyZnakString.charAt(0);
-                gracz.setZnakGracza(nowyZnak);
-                System.out.println("Znak zmieniony");
-            } else if (komenda.equalsIgnoreCase("zamaluj")) {
-                System.out.println("Funkcja zamalowywania właczona");
-                plansza.setZamalowywać(true);
-            } else if (komenda.equalsIgnoreCase("wymaż")) {
-                System.out.println("Funkcja zamalowywania wyłaczona");
-                plansza.setZamalowywać(false);
-            } else if (komenda.equalsIgnoreCase("pro")) {
-                if (gracz.isPro()) {
-                    gracz.setPro(false);
-                } else {
-                    gracz.setPro(true);
-
-                }
-
-            } else System.err.println("Zła komenda!");
-
-        } while (!komenda.equalsIgnoreCase("quit"));
         // Stwórz grę do "poruszania się po ekranie"
         // W grze stwórz pętlę. Użytkownik jest kwadracikiem na ekranie:
         //
