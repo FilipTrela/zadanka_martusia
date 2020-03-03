@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="048eee8b-0486-45fb-a505-1c75dc14e8e3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/day1/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/day1/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Gracz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Gracz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Plansza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/day1/game/Plansza.java" afterDir="false" />
@@ -166,32 +166,6 @@
               <item name="company" type="b2602c69:ProjectViewProjectNode" />
               <item name="zadania" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="company" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zadania" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="company" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zadania" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="company" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zadania" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="company" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zadania" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -204,7 +178,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583235112171" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583258170612" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -293,12 +267,12 @@
       <workItem from="1562857406134" duration="204000" />
       <workItem from="1562860738404" duration="2651000" />
       <workItem from="1563271814781" duration="855000" />
-      <workItem from="1583234380337" duration="618000" />
+      <workItem from="1583234380337" duration="976000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49318000" />
+    <option name="totallyTimeSpent" value="49676000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
